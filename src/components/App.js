@@ -10,23 +10,25 @@ function App() {
   const [isEditAvatarPopupOpen, setEditAvatarPopupOpen] = useState(false);
   const [isEditProfilePopupOpen, setEditProfilePopupOpen] = useState(false);
   const [isAddPlacePopupOpen, setAddPlacePopupOpen] = useState(false);
-
+  const [selectedCard, setSelectedCard] = useState(false);
+  function handleCardClick(card) {
+    setSelectedCard(card);
+    // {isOpen:true} - теряется link:link, name:name даже если подставить 
+  }
   function handleEditAvatarClick() {
     setEditAvatarPopupOpen(true);
   }
-
   function handleEditProfileClick() {
     setEditProfilePopupOpen(true);
   }
-
   function handleAddPlaceClick() {
     setAddPlacePopupOpen(true);
   }
-
   function closeAllPopups() {
     setEditAvatarPopupOpen(false);
     setEditProfilePopupOpen(false);
     setAddPlacePopupOpen(false);
+    setSelectedCard(false);
   }
 
   return (
@@ -37,11 +39,12 @@ function App() {
           <Main
             onEditAvatar={handleEditAvatarClick}
             onEditProfile={handleEditProfileClick}
-            onAddPlace={handleAddPlaceClick} />
+            onAddPlace={handleAddPlaceClick}
+            onCardClick={handleCardClick}/>
         </div>
         <Footer />
       </div>
-      <ImagePopup />
+      <ImagePopup card={selectedCard} onClose={closeAllPopups} isOpen={selectedCard} />
 
       <PopupWithForm
         name='update-avatar'

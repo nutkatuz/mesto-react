@@ -1,15 +1,15 @@
 import React, { useState, useEffect } from 'react';
-// import logo from '../images/logo.svg';
 import '../index.css';
 import { api } from '../utils/api';
+import Card from './Card';
 
-function Main({ onEditAvatar, onEditProfile, onAddPlace }) {
+function Main({ onEditAvatar, onEditProfile, onAddPlace, onCardClick }) {
   const [userName, setUserName] = useState('');
   const [userDescription, setUserDescription] = useState('');
   const [userAvatar, setUserAvatar] = useState('');
   const [cards, setCards] = useState([]);
 
-  React.useEffect(() => {
+  useEffect(() => {
     Promise.all([api.getUserData(), api.getInitialItems()])
       .then(([userInfo, cards]) => {
         setUserName(userInfo.name);
@@ -36,20 +36,11 @@ function Main({ onEditAvatar, onEditProfile, onAddPlace }) {
         <button onMouseUp={() => onAddPlace()} className="profile__add-button hover-style"
           type="button" aria-label="Добавить карточку"></button>
       </section>
-      <section className="gallery">
-
-        <ul className="card-template">
-            {cards.map(item => (
-          <li className="card">
-            <img className="card__image" alt={`${item.name}`} src={`${item.link}`} />
-            <button className="card__recycle-bin hover-style"
-              type="button" aria-label="Удалить"></button>
-            <h3 className="card__title"></h3>
-            <button className="card__like hover-style"
-              type="button" aria-label="Лайкнуть"></button>
-            <p className="card__like-count">{`${item.likes.length}`}</p>
-          </li>
-            ))}
+      <section className="card-template">
+        <ul className="gallery">
+        {cards.map(card => ( 
+        <Card key={card._id} card={card} onCardClick={onCardClick} />
+        ))}
         </ul>
       </section>
     </main>
@@ -57,5 +48,3 @@ function Main({ onEditAvatar, onEditProfile, onAddPlace }) {
 }
 
 export default Main;
-
-// используйте её внутри JSX-итерации по массиву cards. Используйте подстановку данных элемента массива в JSX, чтобы вывести название карточки, количество лайков и указать URL изображения (как и прежде с помощью атрибута style).
