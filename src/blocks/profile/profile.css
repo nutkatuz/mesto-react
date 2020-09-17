@@ -8,7 +8,7 @@
 .profile{
     max-width: 882px;
     width: 95vw;
-    margin: 0;
+    margin: 0 auto;
     padding: 36px 0 47px;
     display: grid;
     grid-template-columns: 157px auto 40px 1fr 150px;
@@ -18,11 +18,8 @@
 
 @media screen and (max-width: 882px) {
     .profile {
-        margin: 0 auto;
         padding: 36px 0 0;
         grid-template-columns: 1fr minmax(1px, auto) min-content 1fr;
         grid-template-areas: 'photo photo photo photo' '. name eddb .' 'job job job job' 'addb addb addb addb';
-        justify-content: center;
-        align-items: end;
     }
 }

@@ -1,6 +1,8 @@
 {
   "name": "mesto-react-app",
   "version": "0.1.0",
+  "description": "Project with Yandex.Practicum",
+  "author": "Anna Revidovich",
   "private": true,
   "dependencies": {
     "@testing-library/jest-dom": "^4.2.4",

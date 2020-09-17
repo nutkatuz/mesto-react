@@ -1,5 +1,4 @@
 import React, { useState, useEffect } from 'react';
-import '../index.css';
 import { api } from '../utils/api';
 import Card from './Card';
 
@@ -27,20 +26,22 @@ function Main({ onEditAvatar, onEditProfile, onAddPlace, onCardClick }) {
       <section className="profile">
         <button onMouseUp={() => onEditAvatar()} className="profile__photobtn" type="button"
           aria-label="Обновить фото профиля" style={{ backgroundImage: `url(${userAvatar})` }}>
-          <div className="profile__photobtn-overlay"></div>
+          <div className="profile__photobtn-overlay">
+          </div>
         </button>
         <h1 className="profile__name">{`${userName}`}</h1>
         <p className="profile__job">{`${userDescription}`}</p>
         <button onMouseUp={() => onEditProfile()} className="profile__edit-button hover-style" type="button"
-          aria-label="Редактировать данные профиля"></button>
+          aria-label="Редактировать данные профиля">
+        </button>
         <button onMouseUp={() => onAddPlace()} className="profile__add-button hover-style"
-          type="button" aria-label="Добавить карточку"></button>
+          type="button" aria-label="Добавить карточку">
+        </button>
       </section>
-      <section className="card-template">
+      <section className="gallery-cards">
         <ul className="gallery">
-        {cards.map(card => ( 
-        <Card key={card._id} card={card} onCardClick={onCardClick} />
-        ))}
+          {cards.map(card => (<Card key={card._id} card={card} onCardClick={onCardClick} />
+          ))}
         </ul>
       </section>
     </main>

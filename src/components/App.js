@@ -4,16 +4,14 @@ import Main from './Main';
 import Footer from './Footer';
 import PopupWithForm from './PopupWithForm';
 import ImagePopup from './ImagePopup';
-import '../index.css';
 
 function App() {
   const [isEditAvatarPopupOpen, setEditAvatarPopupOpen] = useState(false);
   const [isEditProfilePopupOpen, setEditProfilePopupOpen] = useState(false);
   const [isAddPlacePopupOpen, setAddPlacePopupOpen] = useState(false);
-  const [selectedCard, setSelectedCard] = useState(false);
-  function handleCardClick(card) {
-    setSelectedCard(card);
-    // {isOpen:true} - теряется link:link, name:name даже если подставить 
+  const [selectedCard, setSelectedCard] = useState({});
+  function handleCardClick(card) { //замыкание на card
+    setSelectedCard({ ...card, isImgPopupOpen: true });
   }
   function handleEditAvatarClick() {
     setEditAvatarPopupOpen(true);
@@ -24,13 +22,12 @@ function App() {
   function handleAddPlaceClick() {
     setAddPlacePopupOpen(true);
   }
-  function closeAllPopups() {
+  function closeAllPopups(card) {
     setEditAvatarPopupOpen(false);
     setEditProfilePopupOpen(false);
     setAddPlacePopupOpen(false);
-    setSelectedCard(false);
+    setSelectedCard({ ...card, isImgPopupOpen: false });
   }
-
   return (
     <div className="page">
       <div className="page__container">
@@ -40,12 +37,15 @@ function App() {
             onEditAvatar={handleEditAvatarClick}
             onEditProfile={handleEditProfileClick}
             onAddPlace={handleAddPlaceClick}
-            onCardClick={handleCardClick}/>
+            onCardClick={handleCardClick}
+          />
         </div>
         <Footer />
       </div>
-      <ImagePopup card={selectedCard} onClose={closeAllPopups} isOpen={selectedCard} />
-
+      <ImagePopup
+        card={selectedCard}
+        onClose={closeAllPopups}
+      />
       <PopupWithForm
         name='update-avatar'
         title='Обновить аватар'
@@ -70,17 +70,19 @@ function App() {
         title='Редактировать профиль'
         isOpen={isEditProfilePopupOpen}
         onClose={closeAllPopups}
-        >
+      >
         <label className="popup__label">
           <input className="popup__input popup__input_name" type="text"
-            name="firstInp" defaultValue="null" placeholder="Имя"
-            autoComplete="name" required minLength="2" maxLength="40" />
+            name="firstInp" defaultValue="" placeholder="Имя"
+            autoComplete="name" required minLength="2" maxLength="40" 
+          />
           <span className="popup__error"></span>
         </label>
         <label className="popup__label">
           <input className="popup__input popup__input_about" type="text"
-            name="secondInp" defaultValue="null" autoComplete="off"
-            placeholder="О себе" required minLength="2" maxLength="200" />
+            name="secondInp" defaultValue="" autoComplete="off"
+            placeholder="О себе" required minLength="2" maxLength="200" 
+          />
           <span className="popup__error"></span>
         </label>
         <button className="popup__button" type="submit"
@@ -105,13 +107,15 @@ function App() {
           <span className="popup__error"></span>
         </label>
         <button className="popup__button" type="submit" disabled
-          aria-label="Сохранить новую карточку">Создать</button>
+          aria-label="Сохранить новую карточку">Создать
+        </button>
       </PopupWithForm>
 
       <PopupWithForm name='new-card' title='Вы уверены?'>
         <button className="popup__button" type="submit"
-          aria-label="Подтвердить удаление карточки">Да</button></PopupWithForm>
-
+          aria-label="Подтвердить удаление карточки">Да
+        </button>
+      </PopupWithForm>
     </div>
   );
 }
