@@ -1,8 +1,7 @@
 import React from 'react';
 import logo from '../images/logo.svg';
-import '../index.css';
 
-function Header(props) {
+function Header() {
   return (
       <header className="header">
         <img className="header__logo hover-style"

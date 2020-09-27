@@ -1,36 +1,21 @@
-import React, { useState, useEffect } from 'react';
+import React, { useState, useEffect, useContext } from 'react';
 import { api } from '../utils/api';
 import Card from './Card';
+import { CurrentUserContext } from '../contexts/CurrentUserContext';
 
-function Main({ onEditAvatar, onEditProfile, onAddPlace, onCardClick }) {
-  const [userName, setUserName] = useState('');
-  const [userDescription, setUserDescription] = useState('');
-  const [userAvatar, setUserAvatar] = useState('');
-  const [cards, setCards] = useState([]);
-
-  useEffect(() => {
-    Promise.all([api.getUserData(), api.getInitialItems()])
-      .then(([userInfo, cards]) => {
-        setUserName(userInfo.name);
-        setUserDescription(userInfo.about);
-        setUserAvatar(userInfo.avatar);
-        setCards(cards)
-      })
-      .catch((err) => {
-        console.log(`${err}`);
-      });
-  }, [])
+function Main({ onEditAvatar, onEditProfile, onAddPlace, onCardClick, cards }) {
+  const currentUser = React.useContext(CurrentUserContext);
 
   return (
     <main className="content">
       <section className="profile">
         <button onMouseUp={() => onEditAvatar()} className="profile__photobtn" type="button"
-          aria-label="Обновить фото профиля" style={{ backgroundImage: `url(${userAvatar})` }}>
+          aria-label="Обновить фото профиля" style={{ backgroundImage: `url(${currentUser.avatar})` }}>
           <div className="profile__photobtn-overlay">
           </div>
         </button>
-        <h1 className="profile__name">{`${userName}`}</h1>
-        <p className="profile__job">{`${userDescription}`}</p>
+        <h1 className="profile__name">{currentUser.name}</h1>
+        <p className="profile__job">{currentUser.about}</p>
         <button onMouseUp={() => onEditProfile()} className="profile__edit-button hover-style" type="button"
           aria-label="Редактировать данные профиля">
         </button>
@@ -48,4 +33,4 @@ function Main({ onEditAvatar, onEditProfile, onAddPlace, onCardClick }) {
   );
 }
 
-export default Main;
+export default Main
