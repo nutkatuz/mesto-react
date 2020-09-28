@@ -9,3 +9,6 @@
 [0928/122408.654:ERROR:process_reader_win.cc(151)] SuspendThread: Отказано в доступе. (0x5)
 [0928/122408.899:ERROR:process_reader_win.cc(151)] SuspendThread: Отказано в доступе. (0x5)
 [0928/122408.899:ERROR:process_reader_win.cc(151)] SuspendThread: Отказано в доступе. (0x5)
+[0928/142210.052:ERROR:process_reader_win.cc(151)] SuspendThread: Отказано в доступе. (0x5)
+[0928/142210.386:ERROR:process_reader_win.cc(151)] SuspendThread: Отказано в доступе. (0x5)
+[0928/142210.386:ERROR:process_reader_win.cc(151)] SuspendThread: Отказано в доступе. (0x5)
