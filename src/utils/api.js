@@ -119,6 +119,22 @@ class Api {
         return Promise.reject(`Ошибка: ${res.status}`)
       })
   }
+
+  changeLikeCardStatus(_id, isLiked) {
+    return fetch(`${this.baseUrl}/v1/cohort-14/cards/likes/${_id}`, {
+        method: `${isLiked ? 'PUT' : 'DELETE'}`,
+        headers: this.headers,
+        body: JSON.stringify({
+          _id
+        })
+      })
+      .then(res => {
+        if (res.ok) {
+          return res.json()
+        }
+        return Promise.reject(`Ошибка: ${res.status}`)
+      })
+  }
 }
 
 export const api = new Api({

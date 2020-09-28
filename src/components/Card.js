@@ -1,8 +1,8 @@
-import React, { useState, useEffect, useContext } from 'react';
+import React, { useContext } from 'react';
 import { CurrentUserContext } from '../contexts/CurrentUserContext';
 
 
-function Card({ card, onCardClick }) {
+function Card({ card, onCardClick, onCardDelete, onCardLike }) { 
   const currentUser = useContext(CurrentUserContext);
   const isOwn = card.owner._id === currentUser._id;
   const cardDeleteButtonClassName = (`card__recycle-bin hover-style ${isOwn ? '' : 'card__recycle-bin_hidden'}`);
@@ -12,17 +12,26 @@ function Card({ card, onCardClick }) {
   function handleClick() {
     onCardClick(card);
   }
+
+  function handleDeleteClick() {
+    onCardDelete(card);
+  }
+  
+  function handleLikeClick() {
+    onCardLike(card);
+  }
+
   return (
-    <li className="card" onMouseUp={handleClick}>
-      <img className="card__image" alt={`${card.name}`} src={`${card.link}`} />
-      <button className={cardDeleteButtonClassName}
+    <li className="card" >
+      <img className="card__image" alt={`${card.name}`} src={`${card.link}`} onMouseUp={handleClick}/>
+      <button className={cardDeleteButtonClassName} onClick={handleDeleteClick}
         type="button"
         aria-label="Удалить" />
-      <h3 className="card__title">{`${card.name}`}</h3>
-      <button className={cardLikeButtonClassName}
+      <h3 className="card__title">{card.name}</h3>
+      <button className={cardLikeButtonClassName} onClick={handleLikeClick}
         type="button"
         aria-label="Лайкнуть" />
-      <p className="card__like-count">{`${card.likes.length}`}</p>
+      <p className="card__like-count">{card.likes.length}</p>
     </li>
   );
 }

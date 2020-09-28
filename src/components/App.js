@@ -13,13 +13,13 @@ function App() {
   const [isAddPlacePopupOpen, setAddPlacePopupOpen] = useState(false);
   const [selectedCard, setSelectedCard] = useState({});
   const [currentUser, setCurrentUser] = useState({});
-  const [cards, setCards] = useState([]);
+  // const [cards, setCards] = useState([]);
 
   useEffect(() => {
     Promise.all([api.getUserData(), api.getInitialItems()])
       .then(([userInfo, cards]) => {
         setCurrentUser(userInfo);
-        setCards(cards)
+        // setCards(cards)
       })
       .catch((err) => {
         console.log(`${err}`);
@@ -44,6 +44,7 @@ function App() {
     setAddPlacePopupOpen(false);
     setSelectedCard({ ...card, isImgPopupOpen: false });
   }
+
   return (
     <CurrentUserContext.Provider value={currentUser}>
     <div className="page">
@@ -55,7 +56,6 @@ function App() {
             onEditProfile={handleEditProfileClick}
             onAddPlace={handleAddPlaceClick}
             onCardClick={handleCardClick}
-            cards={cards}
           />
         </div>
         <Footer />
