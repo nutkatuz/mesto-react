@@ -14,7 +14,7 @@ function EditProfilePopup({ isOpen, onClose, onUpdateUser} ) { //, isLoading isL
   }, [currentUser]);
 
   function handleChange(e) {
-    e.target.name === 'name'
+    e.target.name === 'firstInp'
       ? setName(e.target.value)  //   setValue(e.target.value);
       : setDescription(e.target.value);
   }
@@ -38,11 +38,11 @@ function EditProfilePopup({ isOpen, onClose, onUpdateUser} ) { //, isLoading isL
         <input className="popup__input popup__input_name"
           type="text"
           name="firstInp"
-          defaultValue=""
+          value={name || ''}
           placeholder="Имя"
           autoComplete="name"
           required
-          minLength="2"
+          minLength='2'
           maxLength="40"
           onChange={handleChange}
         />
@@ -51,14 +51,14 @@ function EditProfilePopup({ isOpen, onClose, onUpdateUser} ) { //, isLoading isL
       <label className="popup__label">
         <input
           className="popup__input popup__input_about"
-          type="text"
-          name="secondInp"
-          defaultValue=""
+          type='text'
+          name='secondInp'
+          value={description || ''}
           autoComplete="off"
           placeholder="О себе"
           required
-          minLength="2"
-          maxLength="200"
+          minLength='2'
+          maxLength='200'
           onChange={handleChange}
         />
         <span className="popup__error" />

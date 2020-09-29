@@ -5,7 +5,6 @@ function PopupWithForm({ name, title, isOpen, onClose, onSubmit, children }) {
     return (
       <section className={`popup ${isOpen?'popup_is-opened':''} popup_${name}`}>
         <form className="popup__form" 
-          name={`${name}`} 
           action="#" 
           noValidate
           onSubmit={onSubmit}>
@@ -22,4 +21,5 @@ function PopupWithForm({ name, title, isOpen, onClose, onSubmit, children }) {
       </section>
     )
 }
+
 export default PopupWithForm;

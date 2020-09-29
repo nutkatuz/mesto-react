@@ -7,6 +7,10 @@ import ImagePopup from './ImagePopup';
 import { CurrentUserContext } from '../contexts/CurrentUserContext';
 import { api } from '../utils/api';
 import EditProfilePopup from './EditProfilePopup';
+import EditAvatarPopup from './EditAvatarPopup';
+// import AddPlacePopup from './AddPlacePopup';
+// import ConfirmDelete from './ConfirmDelete';
+
 
 function App() {
   const [isEditAvatarPopupOpen, setEditAvatarPopupOpen] = useState(false);
@@ -45,14 +49,29 @@ function App() {
     setAddPlacePopupOpen(false);
     setSelectedCard({ ...card, isImgPopupOpen: false });
   }
+  // Теперь нужно создать обработчик в App. Назовите его handleUpdateUser и задайте его в виде нового пропса onUpdateUser для компонента EditAvatarPopup. Внутри этого обработчика вызовите api.setUserInfo. После завершения запроса обновите стейт currentUser из полученных данных и закройте все модальные окна.
 
-  function handleUpdateUser(name, about) {
+  function handleUpdateUser({name, about}) {
     api
-      .patchUserData(name, about)
-      .then((newUser) => {
-        setCurrentUser(newUser)
+      .patchUserData({name, about})
+      .then((res) => {
+        setCurrentUser(res)
       })
-      .catch((err) => console.log(err))
+      .catch((err) => {
+        console.log(`${err}`);
+      });
+  }
+
+  function handleUpdateAvatar(avatar) {//{avatar: "https://pictures.jpg"}
+    api
+      .patchUserAvatar(avatar)
+      .then((res) => {
+        setCurrentUser(res);
+        closeAllPopups();
+      })
+      .catch((err) => {
+        console.log(`${err}`);
+      });
   }
 
   return (
@@ -79,24 +98,11 @@ function App() {
           onClose={closeAllPopups}
           onUpdateUser={handleUpdateUser}
         />
-        <PopupWithForm
-          name='update-avatar'
-          title='Обновить аватар'
+        <EditAvatarPopup 
           isOpen={isEditAvatarPopupOpen}
           onClose={closeAllPopups}
-        >
-          <label className="popup__label">
-            <input
-              className="popup__input popup__input_update-avatar"
-              name="thirdInp"
-              defaultValue=""
-              placeholder="Ссылка на фото"
-              type="url" />
-            <span className="popup__error" />
-          </label>
-          <button className="popup__button" type="submit"
-            aria-label="Обновить фото пользователя">Сохранить</button>
-        </PopupWithForm>
+          onUpdateAvatar={handleUpdateAvatar}
+        />
 
         <PopupWithForm
           name='confirm'

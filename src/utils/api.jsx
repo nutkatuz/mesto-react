@@ -53,9 +53,7 @@ class Api {
     return fetch(`${this.baseUrl}/v1/cohort-14/users/me/avatar`, {
         method: 'PATCH',
         headers: this.headers,
-        body: JSON.stringify({
-          avatar: avatar
-        })
+        body: JSON.stringify(avatar)
       })
       .then(res => {
         if (res.ok) {
@@ -77,7 +75,7 @@ class Api {
       })
   }
 
-  patchUserData(name, about) {
+  patchUserData({name, about}) {
     return fetch(`${this.baseUrl}/v1/cohort-14/users/me`, {
         method: 'PATCH',
         headers: this.headers,
