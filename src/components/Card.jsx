@@ -2,7 +2,12 @@ import React, { useContext } from 'react';
 import { CurrentUserContext } from '../contexts/CurrentUserContext';
 
 
-function Card({ card, onCardClick, onCardDelete, onCardLike }) { 
+function Card({ 
+  card, 
+  onCardClick, 
+  onCardDelete, 
+  onCardLike 
+}) { 
   const currentUser = useContext(CurrentUserContext);
   const isOwn = card.owner._id === currentUser._id;
   const cardDeleteButtonClassName = (`card__recycle-bin hover-style ${isOwn ? '' : 'card__recycle-bin_hidden'}`);

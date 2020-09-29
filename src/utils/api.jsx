@@ -19,13 +19,12 @@ class Api {
       })
   }
 
-  postItem(item) {
+  postItem({name, link}) {
     return fetch(`${this.baseUrl}/v1/cohort-14/cards`, {
         method: 'POST',
         headers: this.headers,
         body: JSON.stringify({
-          name: item.name,
-          link: item.link
+          name, link
         })
       })
       .then(res => {
