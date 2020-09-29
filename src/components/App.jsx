@@ -16,12 +16,13 @@ function App() {
   const [isAddPlacePopupOpen, setAddPlacePopupOpen] = useState(false);
   const [selectedCard, setSelectedCard] = useState({});
   const [currentUser, setCurrentUser] = useState({});
+  const [cards, setCards] = useState([]);
 
   useEffect(() => {
     Promise.all([api.getUserData(), api.getInitialItems()])
       .then(([userInfo, cards]) => {
         setCurrentUser(userInfo);
-        // setCards(cards)
+        setCards(cards)
       })
       .catch((err) => {
         console.log(`${err}`);
@@ -72,20 +73,6 @@ function App() {
   }
 
   //Cards
-
-  const [cards, setCards] = useState([]);
-
-  useEffect(() => {
-    api
-      .getInitialItems()
-      .then((cards) => {
-        // setCurrentUser(userInfo);
-        setCards(cards)
-      })
-      .catch((err) => {
-        console.log(`${err}`);
-      });
-  }, [])
 
   function handleAddPlaceSubmit({name, link}) {
     api
@@ -156,13 +143,6 @@ function App() {
           onAddPlace={handleAddPlaceSubmit}
         />
 
-        <PopupWithForm name='new-card'
-          title='Вы уверены?'>
-          <button className="popup__button"
-            type="submit"
-            aria-label="Подтвердить удаление карточки">Да
-        </button>
-        </PopupWithForm>
       </div>
     </CurrentUserContext.Provider>
   );
