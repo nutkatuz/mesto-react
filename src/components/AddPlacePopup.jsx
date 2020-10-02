@@ -26,33 +26,33 @@ function AddPlacePopup({ isOpen, onClose, onAddPlace }) {
       onClose={onClose}
       onSubmit={handleSubmit}
     >
-      <label className="popup__label">
-        <input className="popup__input popup__input_place-name"
-          type="text"
-          name="name"
+      <label className='popup__label'>
+        <input className='popup__input popup__input_place-name'
+          type='text'
+          name='name'
           value={name || ''} // Значение элемента «привязывается» к значению стейта
           onChange={handleChange}
-          autoComplete="off"
-          placeholder="Название"
-          minLength="1"
-          maxLength="30"
+          autoComplete='off'
+          placeholder='Название'
+          minLength='1'
+          maxLength='30'
           required />
-        <span className="popup__error" />
+        <span className='popup__error' />
       </label>
-      <label className="popup__label">
-        <input className="popup__input popup__input_image_url"
-          type="url"
-          inputMode="url"
-          name="link"
+      <label className='popup__label'>
+        <input className='popup__input popup__input_image_url'
+          type='url'
+          inputMode='url'
+          name='link'
           value={link || ''}
           onChange={handleChange}
-          placeholder="Ссылка на картинку"
+          placeholder='Ссылка на картинку'
           required />
-        <span className="popup__error" />
+        <span className='popup__error' />
       </label>
-      <button className="popup__button"
-        type="submit"
-        aria-label="Сохранить новую карточку">Создать
+      <button className='popup__button'
+        type='submit'
+        aria-label='Сохранить новую карточку'>Создать
       </button>
     </PopupWithForm>
   )

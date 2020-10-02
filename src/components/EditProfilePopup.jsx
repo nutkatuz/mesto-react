@@ -36,38 +36,38 @@ function EditProfilePopup({ isOpen, onClose, onUpdateUser} ) {
       onClose={onClose}
       onSubmit={handleSubmit}
     >
-      <label className="popup__label">
-        <input className="popup__input popup__input_name"
-          type="text"
-          name="firstInp"
+      <label className='popup__label'>
+        <input className='popup__input popup__input_name'
+          type='text'
+          name='firstInp'
           value={name || ''}
-          placeholder="Имя"
-          autoComplete="name"
+          placeholder='Имя'
+          autoComplete='name'
           required
           minLength='2'
-          maxLength="40"
+          maxLength='40'
           onChange={handleChange}
         />
-        <span className="popup__error" />
+        <span className='popup__error' />
       </label>
-      <label className="popup__label">
+      <label className='popup__label'>
         <input
-          className="popup__input popup__input_about"
+          className='popup__input popup__input_about'
           type='text'
           name='secondInp'
           value={description || ''}
-          autoComplete="off"
-          placeholder="О себе"
+          autoComplete='off'
+          placeholder='О себе'
           required
           minLength='2'
           maxLength='200'
           onChange={handleChange}
         />
-        <span className="popup__error" />
+        <span className='popup__error' />
       </label>
-      <button className="popup__button"
-        type="submit"
-        aria-label="Сохранить изменения">Сохранить</button>
+      <button className='popup__button'
+        type='submit'
+        aria-label='Сохранить изменения'>Сохранить</button>
     </PopupWithForm>
   )
 }

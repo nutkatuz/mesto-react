@@ -19,18 +19,20 @@ function EditAvatarPopup({ isOpen, onClose, onUpdateAvatar }) {
       onClose={onClose}
       onSubmit={handleSubmit}
     >
-      <label className="popup__label">
+      <label className='popup__label'>
         <input
           ref={inputRef}
-          className="popup__input popup__input_update-avatar"
-          name="thirdInp"
-          defaultValue=""
-          placeholder="Ссылка на фото"
-          type="url" />
-        <span className="popup__error" />
+          className='popup__input popup__input_update-avatar'
+          name='thirdInp'
+          defaultValue=''
+          placeholder='Ссылка на фото'
+          type='url' />
+        <span className='popup__error' />
       </label>
-      <button className="popup__button" type="submit"
-        aria-label="Обновить фото пользователя">Сохранить</button>
+      <button className='popup__button' 
+        type='submit'
+        aria-label='Обновить фото пользователя'
+        value='Сохранить' />
     </PopupWithForm>
   )
 }

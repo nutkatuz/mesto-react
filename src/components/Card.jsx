@@ -27,16 +27,16 @@ function Card({
   }
 
   return (
-    <li className="card" >
-      <img className="card__image" alt={`${card.name}`} src={`${card.link}`} onMouseUp={handleClick}/>
+    <li className='card' >
+      <img className='card__image' alt={`${card.name}`} src={`${card.link}`} onMouseUp={handleClick}/>
       <button className={cardDeleteButtonClassName} onMouseUp={handleDeleteClick}
-        type="button"
-        aria-label="Удалить" />
-      <h3 className="card__title">{card.name}</h3>
+        type='button'
+        aria-label='Удалить' />
+      <h3 className='card__title'>{card.name}</h3>
       <button className={cardLikeButtonClassName} onMouseUp={handleLikeClick}
-        type="button"
-        aria-label="Лайкнуть" />
-      <p className="card__like-count">{card.likes.length}</p>
+        type='button'
+        aria-label='Лайкнуть' />
+      <p className='card__like-count'>{card.likes.length}</p>
     </li>
   );
 }

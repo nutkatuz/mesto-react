@@ -60,7 +60,7 @@ function App() {
       });
   }
 
-  function handleUpdateAvatar(avatar) {//{avatar: "https://pictures.jpg"}
+  function handleUpdateAvatar(avatar) {//{avatar: 'https://pictures.jpg'}
     api
       .patchUserAvatar(avatar)
       .then((res) => {
@@ -106,9 +106,9 @@ function App() {
 
   return (
     <CurrentUserContext.Provider value={currentUser}>
-      <div className="page">
-        <div className="page__container">
-          <div className="page__header-and-main-wrapper">
+      <div className='page'>
+        <div className='page__container'>
+          <div className='page__header-and-main-wrapper'>
             <Header />
             <Main
               onEditAvatar={handleEditAvatarClick}
