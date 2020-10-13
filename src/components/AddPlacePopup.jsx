@@ -1,25 +1,30 @@
 import React, { useState } from 'react';
-import PopupWithForm from './PopupWithForm';
+import Popup from './Popup';
 
 function AddPlacePopup({ isOpen, onClose, onAddPlace }) {
-  // Стейт, в котором содержится значение инпута
-  const [name, setName] = useState('');
-  const [link, setLink] = useState('');
-
+  
+  const [form, setForm] = useState({
+    name: '',
+    link: ''
+  });
 
   function handleChange(e) {  // Обработчик изменения инпута обновляет стейт
-    e.target.name === 'name'
-      ? setName(e.target.value)
-      : setLink(e.target.value) /* управляемые компоненты */
+    const input = e.target;
+    const name = input.name;
+    const value = input.value;
+    setForm({    // ( {...values, { [name]: value }} )
+      ...form,
+      [input.name]: input.value
+    });
   }
 
   function handleSubmit(e) {
     e.preventDefault();
-    onAddPlace({name, link});
+    onAddPlace(form);    // console.log(form.name, form.link);
   }
 
   return (
-    <PopupWithForm
+    <Popup
       name='confirm'
       title='Новое место'
       isOpen={isOpen}
@@ -30,7 +35,7 @@ function AddPlacePopup({ isOpen, onClose, onAddPlace }) {
         <input className='popup__input popup__input_place-name'
           type='text'
           name='name'
-          value={name || ''} // Значение элемента «привязывается» к значению стейта
+          value={form.name}
           onChange={handleChange}
           autoComplete='off'
           placeholder='Название'
@@ -44,7 +49,7 @@ function AddPlacePopup({ isOpen, onClose, onAddPlace }) {
           type='url'
           inputMode='url'
           name='link'
-          value={link || ''}
+          value={form.link}
           onChange={handleChange}
           placeholder='Ссылка на картинку'
           required />
@@ -54,8 +59,8 @@ function AddPlacePopup({ isOpen, onClose, onAddPlace }) {
         type='submit'
         aria-label='Сохранить новую карточку'>Создать
       </button>
-    </PopupWithForm>
+    </Popup>
   )
 }
 
-export default AddPlacePopup
+export default AddPlacePopup;

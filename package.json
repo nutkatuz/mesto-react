@@ -1,7 +1,7 @@
 {
-  "name": "mesto-react-app",
+  "name": "mesto-react",
   "version": "0.1.0",
-  "description": "Project with Yandex.Practicum",
+  "description": "Project Mesto on React",
   "author": "Anna Revidovich",
   "private": true,
   "homepage": "https://nutkatuz.github.io/mesto-react/",

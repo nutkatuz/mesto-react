@@ -1,35 +1,30 @@
 import React, { useState, useEffect } from 'react';
-import PopupWithForm from './PopupWithForm';
-import { CurrentUserContext } from '../contexts/CurrentUserContext';
+import Popup from './Popup';
 
 function EditProfilePopup({ isOpen, onClose, onUpdateUser} ) {
-  const currentUser = React.useContext(CurrentUserContext);
-  
-  // добавьте стейт-переменные name и description и привяжите их к полям ввода, сделав их управляемыми.
-  const [name, setName] = useState('');
-  const [description, setDescription] = useState('');  
 
-  useEffect(() => {  // После загрузки текущего пользователя из API его данные будут использованы в управляемых компонентах.
-    setName(currentUser.name);
-    setDescription(currentUser.about);
-  }, [currentUser]);
+  const [form, setForm] = useState({
+    name: '',
+    about: ''
+  });
 
   function handleChange(e) {
-    e.target.name === 'firstInp'
-      ? setName(e.target.value)  //   setValue(e.target.value);
-      : setDescription(e.target.value);
-  }
-
-  function handleSubmit(e) {    
-    e.preventDefault();      // Передаём значения управляемых компонентов во внешний обработчик
-    onUpdateUser({
-      name,
-      about: description,
+    const input = e.target;
+    const name = input.name;
+    const value = input.value;
+    setForm({
+      ...form,
+      [input.name]: input.value
     });
   }
 
+  function handleSubmit(e) {// автоподстановка из АПИ в main, не из формы
+    e.preventDefault();
+    onUpdateUser(form);
+  }
+
   return (
-    <PopupWithForm
+    <Popup
       name='profile-edit'
       title='Редактировать профиль'
       isOpen={isOpen}
@@ -39,8 +34,8 @@ function EditProfilePopup({ isOpen, onClose, onUpdateUser} ) {
       <label className='popup__label'>
         <input className='popup__input popup__input_name'
           type='text'
-          name='firstInp'
-          value={name || ''}
+          name='name'
+          value={form.name}
           placeholder='Имя'
           autoComplete='name'
           required
@@ -54,8 +49,8 @@ function EditProfilePopup({ isOpen, onClose, onUpdateUser} ) {
         <input
           className='popup__input popup__input_about'
           type='text'
-          name='secondInp'
-          value={description || ''}
+          name='about'
+          value={form.about}
           autoComplete='off'
           placeholder='О себе'
           required
@@ -68,7 +63,7 @@ function EditProfilePopup({ isOpen, onClose, onUpdateUser} ) {
       <button className='popup__button'
         type='submit'
         aria-label='Сохранить изменения'>Сохранить</button>
-    </PopupWithForm>
+    </Popup>
   )
 }
 

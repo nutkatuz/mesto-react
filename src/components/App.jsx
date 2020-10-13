@@ -2,7 +2,7 @@ import React, { useState, useEffect } from 'react';
 import Header from './Header';
 import Main from './Main';
 import Footer from './Footer';
-import PopupWithForm from './PopupWithForm';
+import Popup from './Popup';
 import ImagePopup from './ImagePopup';
 import { CurrentUserContext } from '../contexts/CurrentUserContext';
 import { api } from '../utils/api';
@@ -74,11 +74,11 @@ function App() {
 
   //Cards
 
-  function handleAddPlaceSubmit({name, link}) {
+  function handleAddPlaceSubmit({ name, link }) {
     api
-      .postItem({name, link})
+      .postItem({ name, link })
       .then((newCard) => {
-        setCards([...cards, newCard]);
+        setCards([newCard, ...cards]);
         closeAllPopups();
       })
       .catch((err) => {
@@ -92,6 +92,9 @@ function App() {
       .then((newCard) => {
         const newCards = cards.map((c) => c._id === card._id ? newCard : c);
         setCards(newCards);
+      })
+      .catch((err) => {
+        console.log(`${err}`);                 //чем отличается это
       });
   }
 
@@ -101,7 +104,7 @@ function App() {
       .then(() => {
         setCards(cards.filter((item) => item !== card));
       })
-      .catch((err) => console.log(err));
+      .catch((err) => console.log(err));          //от этого????
   }
 
   return (
@@ -122,6 +125,10 @@ function App() {
           </div>
           <Footer />
         </div>
+        <Popup
+          card={selectedCard}
+          onClose={closeAllPopups}
+        />
         <ImagePopup
           card={selectedCard}
           onClose={closeAllPopups}

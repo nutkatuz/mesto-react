@@ -11,6 +11,7 @@ function Main({
   onCardLike,
   onCardDelete,
 }) {
+
   const currentUser = useContext(CurrentUserContext);
 
   return (
@@ -25,8 +26,10 @@ function Main({
         >
           <div className='profile__photobtn-overlay' />
         </button>
-        <h1 className='profile__name'>{currentUser.name}</h1>
-        <p className='profile__job'>{currentUser.about}</p>
+        <h1 className='profile__name'>{currentUser.name}
+        </h1>
+        <p className='profile__job'>{currentUser.about}
+        </p>
         <button
           onMouseUp={() => onEditProfile()}
           className='profile__edit-button hover-style'
@@ -55,4 +58,4 @@ function Main({
   );
 }
 
-export default Main
+export default Main;
