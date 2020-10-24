@@ -21,11 +21,12 @@ function App() {
   useEffect(() => {
     Promise.all([api.getUserData(), api.getInitialItems()])
       .then(([userInfo, cards]) => {
+        console.log( userInfo, cards );
         setCurrentUser(userInfo);
         setCards(cards)
       })
       .catch((err) => {
-        console.log(`${err}`);
+        console.log(`Ошибка при загрузке Promise.all ${err}`);
       });
   }, [])
 
@@ -72,8 +73,6 @@ function App() {
       });
   }
 
-  //Cards
-
   function handleAddPlaceSubmit({ name, link }) {
     api
       .postItem({ name, link })
@@ -94,7 +93,7 @@ function App() {
         setCards(newCards);
       })
       .catch((err) => {
-        console.log(`${err}`);                 //чем отличается это
+        console.log(`${err}`);
       });
   }
 
@@ -104,7 +103,7 @@ function App() {
       .then(() => {
         setCards(cards.filter((item) => item !== card));
       })
-      .catch((err) => console.log(err));          //от этого????
+      .catch((err) => console.log(`${err}`));
   }
 
   return (
