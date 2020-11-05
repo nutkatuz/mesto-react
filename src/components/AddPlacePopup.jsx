@@ -1,17 +1,18 @@
 import React, { useState } from 'react';
-import Popup from './Popup';
+import PopupWithForm from './PopupWithForm';
 
 function AddPlacePopup({ isOpen, onClose, onAddPlace }) {
-  
+  // Стейт, в котором содержится значение инпута
   const [form, setForm] = useState({
     name: '',
     link: ''
   });
 
+
   function handleChange(e) {  // Обработчик изменения инпута обновляет стейт
     const input = e.target;
-    const name = input.name;
-    const value = input.value;
+    // const name = input.name;
+    // const value = input.value;
     setForm({    // ( {...values, { [name]: value }} )
       ...form,
       [input.name]: input.value
@@ -20,11 +21,11 @@ function AddPlacePopup({ isOpen, onClose, onAddPlace }) {
 
   function handleSubmit(e) {
     e.preventDefault();
-    onAddPlace(form);    // console.log(form.name, form.link);
+    onAddPlace(form);
   }
 
   return (
-    <Popup
+    <PopupWithForm
       name='confirm'
       title='Новое место'
       isOpen={isOpen}
@@ -35,7 +36,7 @@ function AddPlacePopup({ isOpen, onClose, onAddPlace }) {
         <input className='popup__input popup__input_place-name'
           type='text'
           name='name'
-          value={form.name}
+          value={form.name} // Значение элемента «привязывается» к значению стейта
           onChange={handleChange}
           autoComplete='off'
           placeholder='Название'
@@ -59,8 +60,8 @@ function AddPlacePopup({ isOpen, onClose, onAddPlace }) {
         type='submit'
         aria-label='Сохранить новую карточку'>Создать
       </button>
-    </Popup>
+    </PopupWithForm>
   )
 }
 
-export default AddPlacePopup;
+export default AddPlacePopup

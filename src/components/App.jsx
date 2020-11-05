@@ -2,7 +2,7 @@ import React, { useState, useEffect } from 'react';
 import Header from './Header';
 import Main from './Main';
 import Footer from './Footer';
-import Popup from './Popup';
+// import PopupWithForm from './PopupWithForm';
 import ImagePopup from './ImagePopup';
 import { CurrentUserContext } from '../contexts/CurrentUserContext';
 import { api } from '../utils/api';
@@ -19,14 +19,34 @@ function App() {
   const [cards, setCards] = useState([]);
 
   useEffect(() => {
+    function handleESCclose(evt) {
+      if (evt.key === "Escape") {
+        closeAllPopups();
+      }
+    }
+    document.addEventListener('keydown', handleESCclose);
+    return () => {
+      document.removeEventListener('keydown', handleESCclose);
+    }
+  }, [])
+
+  // useEffect(() => {
+  //   function handleOverlayClose(evt) {
+  //     if (evt.currentTarget !== evt.target) {
+  //       closeAllPopups();
+  //     }
+  //   }
+  //   document.querySelector('.popup_is-opened').addEventListener('click', handleOverlayClose);
+  // }, [])
+
+  useEffect(() => {
     Promise.all([api.getUserData(), api.getInitialItems()])
       .then(([userInfo, cards]) => {
-        console.log( userInfo, cards );
         setCurrentUser(userInfo);
         setCards(cards)
       })
       .catch((err) => {
-        console.log(`Ошибка при загрузке Promise.all ${err}`);
+        console.log(`${err}`);
       });
   }, [])
 
@@ -73,11 +93,13 @@ function App() {
       });
   }
 
-  function handleAddPlaceSubmit({ name, link }) {
+  //Cards
+
+  function handleAddPlaceSubmit({name, link}) {
     api
-      .postItem({ name, link })
+      .postItem({name, link})
       .then((newCard) => {
-        setCards([newCard, ...cards]);
+        setCards([ newCard, ...cards ]);
         closeAllPopups();
       })
       .catch((err) => {
@@ -91,9 +113,6 @@ function App() {
       .then((newCard) => {
         const newCards = cards.map((c) => c._id === card._id ? newCard : c);
         setCards(newCards);
-      })
-      .catch((err) => {
-        console.log(`${err}`);
       });
   }
 
@@ -103,7 +122,7 @@ function App() {
       .then(() => {
         setCards(cards.filter((item) => item !== card));
       })
-      .catch((err) => console.log(`${err}`));
+      .catch((err) => console.log(err));
   }
 
   return (
@@ -124,10 +143,6 @@ function App() {
           </div>
           <Footer />
         </div>
-        <Popup
-          card={selectedCard}
-          onClose={closeAllPopups}
-        />
         <ImagePopup
           card={selectedCard}
           onClose={closeAllPopups}

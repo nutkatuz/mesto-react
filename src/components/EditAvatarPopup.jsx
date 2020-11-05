@@ -1,5 +1,5 @@
 import React from 'react';
-import Popup from './Popup';
+import PopupWithForm from './PopupWithForm';
 
 function EditAvatarPopup({ isOpen, onClose, onUpdateAvatar }) {
   const inputRef = React.useRef('');
@@ -12,7 +12,7 @@ function EditAvatarPopup({ isOpen, onClose, onUpdateAvatar }) {
   }
 
   return (
-    <Popup
+    <PopupWithForm
       name='update-avatar'
       title='Обновить аватар'
       isOpen={isOpen}
@@ -32,10 +32,8 @@ function EditAvatarPopup({ isOpen, onClose, onUpdateAvatar }) {
       <button className='popup__button' 
         type='submit'
         aria-label='Обновить фото пользователя'
-        value=''
-      >
-        Сохранить</button>
-    </Popup>
+        value='Сохранить' />
+    </PopupWithForm>
   )
 }
 

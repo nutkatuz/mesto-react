@@ -4,7 +4,7 @@
   "description": "Project Mesto on React",
   "author": "Anna Revidovich",
   "private": true,
-  "homepage": ".",
+  "homepage": "https://nutkatuz.github.io/mesto-react/",
   "dependencies": {
     "@testing-library/jest-dom": "^4.2.4",
     "@testing-library/react": "^9.5.0",
