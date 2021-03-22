@@ -1,6 +1,6 @@
-### Проект [Mesto](https://nutkatuz.github.io/mesto-react/) - приложение на React
+### Проект [Mesto](https://revidovich.github.io/mesto-react/) - веб-приложение на React
 
-Старая веб-страница на ООП [здесь](https://nutkatuz.github.io/mesto/) для сравнения, если есть доступ (запрашивайте).Приложение стало декларативным и реактивным, появились новые компоненты, а код стал более изящным. Теперь это полноценное и современное веб-приложение.  
+Старая веб-страница на ООП [здесь](https://nutkatuz.github.io/mesto/) для сравнения, если есть доступ (запрашивайте). Приложение стало декларативным и реактивным, появились новые компоненты, а код стал более изящным.   
 Команда `npm start` запускает бандл приложения в браузере на [http://localhost:3000](http://localhost:3000).
 
 This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
