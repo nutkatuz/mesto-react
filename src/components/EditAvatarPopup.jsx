@@ -32,7 +32,7 @@ function EditAvatarPopup({ isOpen, onClose, onUpdateAvatar }) {
       <button className='popup__button' 
         type='submit'
         aria-label='Обновить фото пользователя'
-        value='Сохранить' />
+        value='Сохранить'>Обновить</button>
     </PopupWithForm>
   )
 }
