@@ -1,27 +1,27 @@
 self.__precacheManifest = (self.__precacheManifest || []).concat([
   {
-    "revision": "58bd35a03a3cdc39914333b6b8cf6f51",
+    "revision": "3c24e8d027fe16bb702ec3066480cbd6",
     "url": "/mesto-react/index.html"
   },
   {
-    "revision": "c06a4b2ec6b301fb76d5",
-    "url": "/mesto-react/static/css/main.b1aca8f3.chunk.css"
+    "revision": "aeed7a48f604de9b50c9",
+    "url": "/mesto-react/static/css/main.fbb33868.chunk.css"
   },
   {
-    "revision": "e7086ba4e17babb670b9",
-    "url": "/mesto-react/static/js/2.381772aa.chunk.js"
+    "revision": "8add998c601e232c4ebd",
+    "url": "/mesto-react/static/js/2.25a97956.chunk.js"
   },
   {
-    "revision": "e88a3e95b5364d46e95b35ae8c0dc27d",
-    "url": "/mesto-react/static/js/2.381772aa.chunk.js.LICENSE.txt"
+    "revision": "570d362d673dab785e62d2b8563e1118",
+    "url": "/mesto-react/static/js/2.25a97956.chunk.js.LICENSE.txt"
   },
   {
-    "revision": "c06a4b2ec6b301fb76d5",
-    "url": "/mesto-react/static/js/main.1bf0840f.chunk.js"
+    "revision": "aeed7a48f604de9b50c9",
+    "url": "/mesto-react/static/js/main.3ce6cd89.chunk.js"
   },
   {
-    "revision": "aa6c10004297a7415d3d",
-    "url": "/mesto-react/static/js/runtime-main.1a010d5a.js"
+    "revision": "6e04319a44e5e6859875",
+    "url": "/mesto-react/static/js/runtime-main.36fb0e45.js"
   },
   {
     "revision": "438d040613f4ab457a2bd158608f9068",
@@ -72,35 +72,35 @@ self.__precacheManifest = (self.__precacheManifest || []).concat([
     "url": "/mesto-react/static/media/Inter-Regular.c706da9a.ttf"
   },
   {
-    "revision": "d476a8b86d0b656cfa463c1148e96069",
-    "url": "/mesto-react/static/media/avatarbtn.d476a8b8.svg"
+    "revision": "d7cf2f5c718b53e1453ef57bcf6344d3",
+    "url": "/mesto-react/static/media/avatarbtn.d7cf2f5c.svg"
   },
   {
-    "revision": "c2d0901f14de58acae456bda23f80e8a",
-    "url": "/mesto-react/static/media/close.c2d0901f.svg"
+    "revision": "dc15a47f0b086d480ccb46f8f588d3e9",
+    "url": "/mesto-react/static/media/close.dc15a47f.svg"
   },
   {
-    "revision": "c8252db2902c59bff2cb619de2b75c2f",
-    "url": "/mesto-react/static/media/editbutton.c8252db2.svg"
+    "revision": "20e4fc3082b15355ad224a2c9dd6af7f",
+    "url": "/mesto-react/static/media/editbutton.20e4fc30.svg"
   },
   {
-    "revision": "a33fcd100d0d943b7cd693be0237d16c",
-    "url": "/mesto-react/static/media/heart.a33fcd10.svg"
+    "revision": "76ddc1e082537b1d66da068af7e88279",
+    "url": "/mesto-react/static/media/heart.76ddc1e0.svg"
   },
   {
-    "revision": "9fdebb6b009c16af50fae58657e30a94",
-    "url": "/mesto-react/static/media/heart_black.9fdebb6b.svg"
+    "revision": "9c8c0c56e3d51f17d2a13c888a846cf0",
+    "url": "/mesto-react/static/media/heart_black.9c8c0c56.svg"
   },
   {
-    "revision": "855a8c9865e79463f31e74f9abcb4438",
-    "url": "/mesto-react/static/media/logo.855a8c98.svg"
+    "revision": "661315c6e40788620aecc25c2e004e2b",
+    "url": "/mesto-react/static/media/logo.661315c6.svg"
   },
   {
-    "revision": "bdfb8ebb113b9312e080c2f4b4213223",
-    "url": "/mesto-react/static/media/plus.bdfb8ebb.svg"
+    "revision": "5f2e1516ba1b5e43bc06ccdeb95a2d4d",
+    "url": "/mesto-react/static/media/plus.5f2e1516.svg"
   },
   {
-    "revision": "efa6fb04512d4ea565aaa4109835b46d",
-    "url": "/mesto-react/static/media/trash.efa6fb04.svg"
+    "revision": "9b4ed7ca470cb8c433c76d0503eb6158",
+    "url": "/mesto-react/static/media/trash.9b4ed7ca.svg"
   }
 ]);
